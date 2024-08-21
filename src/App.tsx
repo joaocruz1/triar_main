@@ -8,7 +8,7 @@ function App() {
       <Header
         title="Sua empresa em boas mãos"
         subtitle="Triar Contabilidade"
-        logoUrl="/img/tiar-logo.png" 
+        logoUrl="/img/logo-triar.png" 
       />
       <main style={mainStyle}>
         
