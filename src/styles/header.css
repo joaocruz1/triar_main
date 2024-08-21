@@ -1,0 +1,46 @@
+header {
+    display: flex;
+    flex-direction: column; /* Alinha o texto do header e o navbar verticalmente */
+    background-color:  #f4f4f4;
+    color: #000000;
+    padding: 10px 5px; /* Padding reduzido para diminuir a altura */
+    box-sizing: border-box; /* Inclui padding no cálculo da altura */
+  }
+  
+  header .top-section {
+    display: flex;
+    align-items: center; /* Centraliza verticalmente a logo e o texto */
+    justify-content: space-between; /* Espaça a logo e o texto horizontalmente */
+    width: 95%; /* Faz a seção superior ocupar toda a largura */
+  }
+  
+  header .logo {
+    margin-left: 9px;
+    display: flex;
+    align-items: center; /* Centraliza verticalmente a logo */
+  }
+  
+  header .logo img {
+    height: 40px; /* Ajusta a altura da logo */
+  }
+  
+  header .text {
+    flex: 1;
+    text-align: center;
+    margin-left: 20px; /* Espaço entre a logo e o texto */
+  }
+  
+  header h1 {
+    font-size: 18px; /* Diminui o tamanho do texto */
+    margin: 0; /* Remove margens adicionais */
+  }
+  
+  header h2 {
+    font-size: 14px;
+    margin: 0;
+    color: #bbb;
+  }
+  
+  
+  
+  

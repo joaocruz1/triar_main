@@ -1,0 +1,48 @@
+.navbar {
+    display: flex;
+    justify-content: center;
+    background-color:  #f4f4f4;
+    border-top: 2px solid #0063e4;
+    margin: 0; /* Zera todas as margens */
+    margin-top: 9px; /* Define a margem superior */
+    padding: 10px; /* Mantém o padding interno como desejado */
+    box-sizing: border-box; /* Inclui o padding no cálculo da largura total */
+    width: 100%; /* Define a largura do navbar como 100% da largura do contêiner pai */
+    position: relative; /* Garante que o navbar fique dentro da área visível */
+    left: 0; /* Garante que o navbar esteja alinhado à esquerda */
+    right: 0; /* Garante que o navbar esteja alinhado à direita */
+    overflow-x: hidden; /* Remove possíveis barras de rolagem horizontais */
+  }
+  
+  .navbar-menu {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .navbar-item {
+    margin: 0 10px 5px 5px;
+  }
+  
+  .navbar-item a {
+    
+    text-decoration: none; /* Remove o sublinhado padrão */
+    color: #000000; /* Cor do texto do link */
+    font-size: 16px; /* Tamanho da fonte do link */
+    padding: 5px 10px; /* Espaçamento interno */
+    display: inline-block; /* Necessário para o transform funcionar corretamente */
+    transition: transform 0.3s ease; /* Transição suave para a transformação */
+    
+
+  }
+  
+  .navbar-item a:hover {
+    
+    transform: scale(1.1); /* Aumenta o tamanho do link em 20% */
+    color: #0063e4;
+  }
+  
+  
+  
