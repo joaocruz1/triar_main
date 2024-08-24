@@ -20,5 +20,4 @@
 @media (max-width: 768px) {
   .navbar-menu {
     flex-direction: column; /* Empilha os itens do navbar */
-  }
-}
+  }}

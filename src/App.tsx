@@ -1,17 +1,18 @@
 import React from 'react';
-import Header from './assets/Header'
-
+import Header from './assets/Header';
 
 function App() {
   return (
     <div className="App" style={appStyle}>
       <Header
-        title="Sua empresa em boas mãos"
-        subtitle="Triar Contabilidade"
-        logoUrl="/img/logo-triar.png" 
+        logoUrl="/img/logo-triar.png"
+        actionButtons={[
+          { label: "Fale Conosco", url: "/contact" },
+          { label: "Nossas Soluções", url: "/solutions" }
+        ]}
       />
       <main style={mainStyle}>
-        
+        {/* Your main content here */}
       </main>
     </div>
   );
