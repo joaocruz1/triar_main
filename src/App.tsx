@@ -8,7 +8,7 @@ function App() {
         logoUrl="/img/logo-triar.png"
         actionButtons={[
           { label: "Fale Conosco", url: "/contact" },
-          { label: "Nossas Soluções", url: "/solutions" }
+          { label: "Nossas Serviços", url: "/services" }
         ]}
       />
       <main style={mainStyle}>
