@@ -4,7 +4,7 @@ import '../styles/header.css';
 
 type HeaderProps = {
   logoUrl: string;
-  actionButtons: { label: string; url: string }[];
+  actionButtons: { label: string; url: string; dropdownItems?: { label: string; url: string }[] }[];
 };
 
 const Header: React.FC<HeaderProps> = ({ logoUrl, actionButtons }) => {
@@ -16,9 +16,20 @@ const Header: React.FC<HeaderProps> = ({ logoUrl, actionButtons }) => {
         </div>
         <div className="actions">
           {actionButtons.map((button, index) => (
-            <Link key={index} to={button.url} className="action-button">
-              {button.label}
-            </Link>
+            <div key={index} className="dropdown">
+              <Link to={button.url} className="action-button">
+                {button.label}
+              </Link>
+              {button.dropdownItems && (
+                <div className="dropdown-content">
+                  {button.dropdownItems.map((item, itemIndex) => (
+                    <Link key={itemIndex} to={item.url}>
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
           ))}
         </div>
       </div>
