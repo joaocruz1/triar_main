@@ -1,17 +1,13 @@
 import React from 'react';
-import Navbar from '../components/Navbar';
+import { Link } from 'react-router-dom';
 import '../styles/header.css';
 
 type HeaderProps = {
   logoUrl: string;
   actionButtons: { label: string; url: string }[];
-
 };
 
-const Header: React.FC<HeaderProps> = ({
-  logoUrl,
-  actionButtons,
-}) => {
+const Header: React.FC<HeaderProps> = ({ logoUrl, actionButtons }) => {
   return (
     <header>
       <div className="top-section">
@@ -20,18 +16,14 @@ const Header: React.FC<HeaderProps> = ({
         </div>
         <div className="actions">
           {actionButtons.map((button, index) => (
-            <button key={index} className="action-button">
+            <Link key={index} to={button.url} className="action-button">
               {button.label}
-            </button>
+            </Link>
           ))}
         </div>
       </div>
-      <Navbar />
     </header>
   );
 };
 
 export default Header;
-
-
-

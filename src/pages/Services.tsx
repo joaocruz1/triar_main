@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Solutions: React.FC = () => {
+const Services: React.FC = () => {
   return (
     <div>
       <h1>Solutions Page</h1>
@@ -9,5 +9,5 @@ const Solutions: React.FC = () => {
   );
 };
 
-export default Solutions;  // Exportação padrão
+export default Services;  // Exportação padrão
 

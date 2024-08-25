@@ -1,31 +1,24 @@
 import React from 'react';
-import Header from './assets/Header';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Home from './pages/Home';
+import Contact from './pages/Contact';  // Supondo que você tenha um componente de página de contato
+import Services from './pages/Services';  // Supondo que você tenha um componente de página de serviços
+import './styles/app.css';
 
 function App() {
   return (
-    <div className="App" style={appStyle}>
-      <Header
-        logoUrl="/img/logo-triar.png"
-        actionButtons={[
-          { label: "Fale Conosco", url: "/contact" },
-          { label: "Nossas Serviços", url: "/services" }
-        ]}
-      />
-      <main style={mainStyle}>
-        {/* Your main content here */}
-      </main>
-    </div>
+    <Router>
+      <div className="App">
+        <main>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/services" element={<Services />} />
+          </Routes>
+        </main>
+      </div>
+    </Router>
   );
 }
-
-// Estilos Inline para o App
-const appStyle: React.CSSProperties = {
-  fontFamily: 'Arial, sans-serif',
-  textAlign: 'center',
-};
-
-const mainStyle: React.CSSProperties = {
-  padding: '20px',
-};
 
 export default App;
