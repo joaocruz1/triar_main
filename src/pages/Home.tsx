@@ -6,7 +6,8 @@ const Home = () =>{
         logoUrl="/img/logo-triar.png"
         actionButtons={[
           { label: "Fale Conosco", url: "/contact" },
-          { label: "Nossas Serviços", url: "/services" }
+          { label: "Nossas Serviços", url: "/services" },
+          { label: "Quem somos", url: "/info"}
         ]}
       />
     )

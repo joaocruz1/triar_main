@@ -1,46 +1,59 @@
 header {
-    display: flex;
-    flex-direction: column; /* Alinha o texto do header e o navbar verticalmente */
-    background-color:  #f4f4f4;
-    color: #000000;
-    padding: 10px 5px; /* Padding reduzido para diminuir a altura */
-    box-sizing: border-box; /* Inclui padding no cálculo da altura */
-  }
+  display: flex;
+  flex-direction: column; /* Alinha o texto do header e o navbar verticalmente */
+  background-color: #f8f9fa;
+  color: #000000;
+  padding: 10px 5px; /* Padding reduzido para diminuir a altura */
+  box-sizing: border-box; /* Inclui padding no cálculo da altura */
+  border-bottom: 1px solid #e1e1e1;
+}
+
+header .top-section {
+  display: flex;
+  align-items: center; /* Centraliza verticalmente a logo e o texto */
+  justify-content: center; /* Centraliza horizontalmente */
+  padding: 0 40px; /* Aumenta o padding para afastar mais das bordas */
+  background-color: #f8f9fa; /* Garante que o fundo da top-section seja o mesmo do header */
+}
+
+header .logo {
+  margin-left: -20px; /* Move a logo um pouco para a esquerda */
+  display: flex;
+  align-items: center; /* Centraliza verticalmente a logo */
+  margin-right: 250px; /* Ajusta o espaço à direita da logo */
+}
+
+header .logo img {
+  height: 40px; /* Ajusta a altura da logo */
+}
+
+header .text {
+  flex: 1;
+  text-align: center;
+  margin-left: 20px; /* Espaço entre a logo e o texto */
+}
+
+header .actions {
+  display: flex;
+  gap: 10px;
+  margin-left: 20px; /* Mantém um pequeno espaço entre o texto e os botões */
+  border-right: 1px solid #011fff; /* Mantém a borda direita visível */
+}
+
+
+header .action-button {
+  background-color: #f8f9fa;  /* Cor de fundo dos botões */
+  color: rgb(0, 0, 0);  /* Cor do texto */
+  padding: 6px 14px;  /* Espaçamento interno */
+  cursor: pointer;  /* Muda o cursor para indicar que é clicável */
+  text-decoration: none;  /* Remove a sublinha de links */  
+  transition: background-color 0.8s ease, color 0.8s ease; /* Aumenta o tempo da transição */
   
-  header .top-section {
-    display: flex;
-    align-items: center; /* Centraliza verticalmente a logo e o texto */
-    justify-content: space-between; /* Espaça a logo e o texto horizontalmente */
-    width: 95%; /* Faz a seção superior ocupar toda a largura */
-  }
-  
-  header .logo {
-    margin-left: 9px;
-    display: flex;
-    align-items: center; /* Centraliza verticalmente a logo */
-  }
-  
-  header .logo img {
-    height: 40px; /* Ajusta a altura da logo */
-  }
-  
-  header .text {
-    flex: 1;
-    text-align: center;
-    margin-left: 20px; /* Espaço entre a logo e o texto */
-  }
-  
-  header h1 {
-    font-size: 18px; /* Diminui o tamanho do texto */
-    margin: 0; /* Remove margens adicionais */
-  }
-  
-  header h2 {
-    font-size: 14px;
-    margin: 0;
-    color: #bbb;
-  }
-  
-  
-  
-  
+}
+
+header .action-button:hover {
+  color: #011fff; /* Cor do texto ao passar o mouse */
+  text-decoration: none;
+  background-color: #f8f9fa; /* Mantém a cor de fundo */
+ 
+}
