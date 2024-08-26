@@ -2,7 +2,7 @@
 header {
   display: flex;
   flex-direction: column;
-  background-color: #f8f9fa;
+  background-color: #f8f9fa; /* Cor padrão */
   color: #000000;
   padding: 10px 5px;
   box-sizing: border-box;
@@ -32,61 +32,102 @@ header .actions {
   display: flex;
   gap: 10px;
   margin-left: 20px;
-  position: relative;
+  background-color: #f8f9fa; /* Mantém a cor de fundo das actions */
 }
 
 header .action-button {
-  background-color: #f8f9fa;
   color: rgb(0, 0, 0);
+  background-color: #f8f9fa; /* Cor de fundo padrão */
   padding: 6px 14px;
   cursor: pointer;
   text-decoration: none;
-  transition: background-color 1.0s ease, transform 1.0s ease;
-  border: 1px solid transparent;
+  transition: color 0.3s ease; /* Transição apenas para a cor */
 }
 
 header .action-button:hover {
   color: #011fff;
-  transform: scale(1.06);
-  background-color: #f8f9fa;
-  border-color: #011fff;
+  background-color: #f8f9fa; /* Mantém a cor de fundo ao passar o mouse */
+  text-decoration: none;
 }
 
-/* Estilos para o dropdown */
 .dropdown {
-  position: relative;
+  position: relative; /* Mantém o dropdown posicionado em relação ao contêiner pai */
 }
 
 .dropdown-content {
-  display: none; /* Esconde o dropdown por padrão */
-  position: absolute;
-  top: 100%;
-  left: 0;
+  visibility: hidden; /* Esconde o dropdown por padrão */
+  position: fixed; /* Fixa o dropdown em relação à tela */
+  top: 60px; /* Ajusta a distância do topo da tela, se necessário */
+  left: 0; /* Alinha o dropdown com a borda esquerda da tela */
   background-color: #fff;
   border: 1px solid #e1e1e1;
   box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-  z-index: 10;
-  width: max-content;
-  min-width: 160px;
+  z-index: 1000; /* Garante que o dropdown fique acima de outros elementos */
+  width: 100vw; /* Faz o dropdown ocupar toda a largura da tela */
+  max-width: 100%; /* Garante que não exceda a largura da tela */
+  max-height: 400px; /* Define uma altura máxima */
+  overflow-y: auto; /* Permite rolagem se necessário */
   border-radius: 4px;
+  opacity: 0; /* Inicia invisível */
+  transform: translateY(-10px); /* Inicia um pouco acima */
+  transition: opacity 0.4s ease, transform 0.4s ease, visibility 0s 0.5s; /* Animação de aparecimento */
+  box-sizing: border-box; /* Inclui o padding e a borda no cálculo da largura e altura */
+  display: flex; /* Usa flexbox para organização dos itens */
+  flex-direction: column; /* Organiza os itens em coluna */
+  align-items: center; /* Centraliza os itens horizontalmente */
+}
+
+.dropdown:hover .dropdown-content {
+  visibility: visible; /* Torna visível */
+  opacity: 1; /* Torna visível */
+  transform: translateY(0); /* Move para a posição original */
+  transition-delay: 0s; /* Remove o atraso */
 }
 
 .dropdown-content a {
-  display: block;
-  padding: 8px 16px;
+  display: inline-flex; /* Exibe como bloco em linha */
+  width: auto; /* Largura automática para se ajustar ao conteúdo */
+  padding: 8px 16px; /* Define o espaçamento interno */
   color: #333;
   text-decoration: none;
-  white-space: nowrap;
+  border-bottom: 1px solid #e1e1e1; /* Adiciona borda cinza clara */
+  white-space: nowrap; /* Impede a quebra de linha */
+  border-radius: 4px; /* Adiciona bordas arredondadas */
+  margin: 4px 0; /* Adiciona margem vertical entre os itens */
+  box-sizing: border-box; /* Inclui o padding e a borda no cálculo da largura e altura */
 }
 
 .dropdown-content a:hover {
   background-color: #f1f1f1;
 }
 
-.dropdown:hover .dropdown-content {
-  display: block; /* Mostra o dropdown ao passar o mouse */
+.dropdown-content a:last-child {
+  border-bottom: none; /* Remove a borda do último item */
 }
 
-.dropdown:hover .action-button {
-  background-color: #e1e1e1; /* Altera a cor do botão ao passar o mouse */
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

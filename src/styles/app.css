@@ -3,3 +3,7 @@
   border: 0;
   padding: 0;
 }
+
+a{
+  background-color: transparent; /* Remove o fundo */
+}
