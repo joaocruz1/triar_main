@@ -35,6 +35,7 @@ header .actions {
   background-color: #f8f9fa; /* Mantém a cor de fundo das actions */
 }
 
+/* Estilos para o Header */
 header .action-button {
   color: rgb(0, 0, 0);
   background-color: #f8f9fa; /* Cor de fundo padrão */
@@ -42,92 +43,100 @@ header .action-button {
   cursor: pointer;
   text-decoration: none;
   transition: color 0.3s ease; /* Transição apenas para a cor */
+  border-bottom: 5px solid transparent; /* Define a borda inicial transparente */
 }
 
-header .action-button:hover {
-  color: #011fff;
+header .action-button:hover, 
+.dropdown:hover .action-button {
+  color: #00aeef;
   background-color: #f8f9fa; /* Mantém a cor de fundo ao passar o mouse */
+  padding-bottom: 17px;
+  border-bottom: 5px solid #00aeef; /* Borda azul ao passar o mouse */
   text-decoration: none;
+
 }
 
-.dropdown {
-  position: relative; /* Mantém o dropdown posicionado em relação ao contêiner pai */
-}
-
+/* Dropdown Styles */
 .dropdown-content {
-  visibility: hidden; /* Esconde o dropdown por padrão */
-  position: fixed; /* Fixa o dropdown em relação à tela */
-  top: 60px; /* Ajusta a distância do topo da tela, se necessário */
-  left: 0; /* Alinha o dropdown com a borda esquerda da tela */
+  visibility: hidden;
+  position: fixed;
+  top: 60px;
+  left: 15px;
   background-color: #fff;
   border: 1px solid #e1e1e1;
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-  z-index: 1000; /* Garante que o dropdown fique acima de outros elementos */
-  width: 100vw; /* Faz o dropdown ocupar toda a largura da tela */
-  max-width: 100%; /* Garante que não exceda a largura da tela */
-  max-height: 400px; /* Define uma altura máxima */
-  overflow-y: auto; /* Permite rolagem se necessário */
+  box-shadow: 0px 6px 12px rgba(42, 176, 253, 0.4);
+  z-index: 1000;
+  width: 98vw;
+  max-width: 100%;
+  max-height: 400px;
+  overflow-y: auto;
   border-radius: 4px;
-  opacity: 0; /* Inicia invisível */
-  transform: translateY(-10px); /* Inicia um pouco acima */
-  transition: opacity 0.4s ease, transform 0.4s ease, visibility 0s 0.5s; /* Animação de aparecimento */
-  box-sizing: border-box; /* Inclui o padding e a borda no cálculo da largura e altura */
-  display: flex; /* Usa flexbox para organização dos itens */
-  flex-direction: column; /* Organiza os itens em coluna */
-  align-items: center; /* Centraliza os itens horizontalmente */
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.4s ease, transform 0.4s ease, visibility 0s 0.5s;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px; /* Espaçamento entre as colunas e linhas */
+  align-items: flex-start; /* Alinha os itens no topo */
+  padding: 10px; /* Adiciona um pouco de espaçamento interno */
 }
 
 .dropdown:hover .dropdown-content {
-  visibility: visible; /* Torna visível */
-  opacity: 1; /* Torna visível */
-  transform: translateY(0); /* Move para a posição original */
-  transition-delay: 0s; /* Remove o atraso */
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0s;
 }
 
 .dropdown-content a {
-  display: inline-flex; /* Exibe como bloco em linha */
-  width: auto; /* Largura automática para se ajustar ao conteúdo */
-  padding: 8px 16px; /* Define o espaçamento interno */
+  display: flex;
+  align-items: center;
+  width: 170px;
+  margin-bottom: 10px; /* Espaço entre os itens verticalmente */
+  padding: 8px 16px;
   color: #333;
   text-decoration: none;
-  border-bottom: 1px solid #e1e1e1; /* Adiciona borda cinza clara */
-  white-space: nowrap; /* Impede a quebra de linha */
-  border-radius: 4px; /* Adiciona bordas arredondadas */
-  margin: 4px 0; /* Adiciona margem vertical entre os itens */
-  box-sizing: border-box; /* Inclui o padding e a borda no cálculo da largura e altura */
+  background-color: #fff; /* Garante que o fundo seja consistente */
+  border-bottom: 1px solid #e1e1e1;
+  white-space: nowrap;
+  border-radius: 4px;
+  box-sizing: border-box;
+  transition: color 0.6s ease, transform 0.4s ease; /* Transição para a cor e o tamanho */
 }
 
 .dropdown-content a:hover {
-  background-color: #f1f1f1;
+  color: #00aeef;
+  transform: scale(1.05); /* Aumenta ligeiramente o tamanho do link */
+}
+
+
+.dropdown-content a img {
+ 
+  background-color: #fff; /* Fundo da imagem consistente com o dropdown */
+  border-radius: 4px; /* Bordas arredondadas para a imagem */
+}
+
+.dropdown-content .primary-img {
+  width: 35px; /* Tamanho desejado para a imagem principal */
+  height: 35px;
+  margin-right: 8px; /* Espaçamento entre a imagem e o texto */
+}
+
+/* Estilo para a imagem de seta dentro do dropdown */
+.dropdown-content .arrow-img {
+  width: 13px; /* Tamanho desejado para a imagem da seta */
+  height: 13px;
+  margin-left: 15px; /* Espaçamento entre o texto e a seta */
+  opacity: 0.8;
+}
+
+.dropdown-content a:hover {
+  text-decoration: none;
 }
 
 .dropdown-content a:last-child {
-  border-bottom: none; /* Remove a borda do último item */
+  border-bottom: none;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

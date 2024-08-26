@@ -4,7 +4,7 @@ import '../styles/header.css';
 
 type HeaderProps = {
   logoUrl: string;
-  actionButtons: { label: string; url: string; dropdownItems?: { label: string; url: string }[] }[];
+  actionButtons: { label: string; url: string; dropdownItems?: { label: string; img: string; url: string }[] }[];
 };
 
 const Header: React.FC<HeaderProps> = ({ logoUrl, actionButtons }) => {
@@ -24,7 +24,9 @@ const Header: React.FC<HeaderProps> = ({ logoUrl, actionButtons }) => {
                 <div className="dropdown-content">
                   {button.dropdownItems.map((item, itemIndex) => (
                     <Link key={itemIndex} to={item.url}>
+                      <img src={item.img} className="dropdown-item-img primary-img" />
                       {item.label}
+                      <img src="/img/seta-direita.png" className="dropdown-item-img arrow-img" />
                     </Link>
                   ))}
                 </div>
