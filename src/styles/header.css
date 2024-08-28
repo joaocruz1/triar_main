@@ -32,15 +32,15 @@ header .actions-container {
   display: flex;
   align-items: center;
   color: #006ad5;
+  background-color: #f8f9fa;
 }
 
 header .actions {
   display: flex;
   gap: 20px; /* Espaçamento entre os itens de ação */
   align-items: center;
-  margin-right: 20px; /* Ajusta o espaço entre os itens de ação e o ícone de pesquisa */
+  margin-right: 5px; /* Ajusta o espaço entre os itens de ação e o ícone de pesquisa */
   background-color: #f8f9fa;
-  
 }
 
 header .action-button {
@@ -51,7 +51,6 @@ header .action-button {
   text-decoration: none;
   transition: color 0.3s ease;
   border-bottom: 5px solid transparent;
-  
 }
 
 header .action-button:hover,
@@ -62,29 +61,38 @@ header .action-button:hover,
   text-decoration: none;
 }
 
-.search-icon-link {
+.search-icon-button {
   display: flex;
+  border-left: 1px solid #00aeef;
   align-items: center;
   margin-left: 20px; /* Espaço entre o ícone de pesquisa e os outros botões */
+  padding-left: 25px;
+  background: none;
+}
+
+.search-icon-button:hover {
+  background-color: #f8f9fa;
 }
 
 .search-icon {
-  width: 20px; /* Tamanho do ícone de pesquisa */
-  height: 20px;
+  width: 25px; /* Tamanho do ícone de pesquisa */
+  height: 25px;
   cursor: pointer;
   transition: transform 0.3s ease, opacity 0.3s ease;
+  background-color: #f8f9fa;
 }
 
 .search-icon:hover {
-  transform: scale(1.1);
+  transform: scale(1.2);
   opacity: 0.8;
+  background-color: #f8f9fa;
 }
 
 /* Dropdown Styles */
 .dropdown-content {
   visibility: hidden;
   position: fixed;
-  top: 61px;
+  top: 65px;
   left: 15px;
   background-color: #fff;
   border: 1px solid #e1e1e1;
@@ -158,4 +166,130 @@ header .action-button:hover,
 
 .dropdown-content a:last-child {
   border-bottom: none;
+}
+
+/* Modal de Pesquisa */
+.search-modal {
+  display: none; /* Inicialmente escondido */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2000;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-modal.active {
+  display: flex;
+}
+
+/* Modal de Pesquisa */
+.search-modal-content {
+  background-color: #f8f9fa;
+  color:#f8f9fa ;
+  padding: 30px; /* Aumenta o padding para dar mais espaçamento interno */
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  width: 70%; /* Aumenta a largura do modal */
+  max-width: 500px; /* Aumenta o valor máximo da largura */
+  min-height: 100px; /* Define uma altura mínima maior para o modal */
+  display: flex;
+  flex-direction: column;
+  position: relative; /* Mantém o contexto de posicionamento */
+}
+
+/* Estilos do campo de input e botão de fechar no modal */
+.search-input-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-top: 20px; /* Ajusta o espaço acima do campo de input */
+}
+
+.search-input {
+  flex-grow: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  transition: border-color 0.3s ease;
+}
+
+.search-input.error {
+  border-color: #f00; /* Cor vermelha quando há erro */
+  background-color: #ffe6e6; /* Fundo levemente vermelho para destaque */
+}
+
+.form-model{
+  background-color: #f8f9fa;
+  color:#f8f9fa ;
+}
+
+.error-message {
+  color: #f00; /* Cor vermelha para a mensagem de erro */
+  margin-top: 10px;
+}
+
+.close-modal-button {
+  position: absolute; /* Para posicionamento absoluto */
+  top: 10px; /* Ajusta a distância do topo */
+  right: 10px; /* Ajusta a distância da direita */
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  width: 30px;  /* Ajusta a largura do botão */
+  height: 30px; /* Ajusta a altura do botão */
+  padding: 0;   /* Remove qualquer padding extra */
+  z-index: 1; /* Garante que o botão esteja acima de outros elementos */
+}
+
+.close-icon {
+  width: 30px; /* Tamanho do ícone de fechar */
+  height: 30px;
+  background-color: transparent; /* Fundo transparente */
+  transition: transform 0.2s ease, color 0.2s ease; /* Animação de transição */
+}
+
+.close-modal-button:hover .close-icon {
+  transform: scale(1.1); /* Aumenta o tamanho no hover */
+  background-color: #f8f9fa;
+}
+
+
+/* Sugestões de Pesquisa */
+.search-suggestions {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-width: 500px;
+  max-height: 100px;
+  overflow-y: auto;
+  display: none; /* Oculta as sugestões inicialmente */
+  position: absolute;
+  top: 95px; /* Ajuste para aparecer acima do botão de pesquisa */
+  left: 40px;
+  right: 0;
+  background-color: #fff;
+  border: 1px solid #e1e1e1;
+  border-radius: 4px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.search-suggestions.active {
+  display: block; /* Exibe as sugestões quando a classe 'active' é adicionada */
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.search-suggestions li {
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, padding 0.3s ease;
+}
+
+.search-suggestions li:hover {
+  background-color: #f0f0f0;
 }
