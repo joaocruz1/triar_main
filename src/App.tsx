@@ -1,4 +1,3 @@
-import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './components/Navbar';
 import Contact from './pages/Contact';  // Supondo que você tenha um componente de página de contato
