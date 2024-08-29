@@ -5,10 +5,12 @@ import '../styles/header.css';
 
 // Importar dinamicamente páginas
 const pages = import.meta.glob('/src/pages/*.tsx'); // Usando Vite
-const pageNames = Object.keys(pages).map((path) => {
-  const match = path.match(/\/src\/pages\/(.*)\.tsx$/);
-  return match ? `/${match[1].toLowerCase()}` : '';
-}).filter(Boolean);
+const pageNames = Object.keys(pages)
+  .map((path) => {
+    const match = path.match(/\/src\/pages\/(.*)\.tsx$/);
+    return match ? `/${match[1].toLowerCase()}` : '';
+  })
+  .filter(Boolean);
 
 interface HeaderProps {
   logoUrl: string;
@@ -26,10 +28,9 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ logoUrl, actionButtons, children }) => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const [showSuggestions, setShowSuggestions] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [searchSuggestions, setSearchSuggestions] = useState<string[]>([]);
-  const [hasNoResults, setHasNoResults] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(''); // Estado para a mensagem de erro
   const navigate = useNavigate();
 
   const toggleSearchModal = () => {
@@ -37,40 +38,44 @@ const Header: React.FC<HeaderProps> = ({ logoUrl, actionButtons, children }) => 
     if (isSearchOpen) {
       setSearchQuery(''); // Limpar pesquisa ao fechar
       setSearchSuggestions([]); // Limpar sugestões ao fechar
-      setHasNoResults(false); // Resetar estado de "nenhum resultado"
+      setErrorMessage(''); // Resetar mensagem de erro ao fechar
     }
   };
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const query = event.target.value;
     setSearchQuery(query);
-    if (query.length > 0) {
-      // Filtrar páginas com base na pesquisa
-      const suggestions = pageNames.filter(page => page.toLowerCase().includes(query.toLowerCase()));
-      setSearchSuggestions(suggestions);
-
-      // Verificar se há resultados
-      if (suggestions.length === 0) {
-        setHasNoResults(true);
-      } else {
-        setHasNoResults(false);
-      }
-    } else {
-      setSearchSuggestions([]);
-      setHasNoResults(false);
-    }
+    setSearchSuggestions([]); // Limpa sugestões durante a digitação
+    setErrorMessage(''); // Limpa mensagem de erro durante a digitação
   };
 
   const handleSearchSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    const matchingPage = searchSuggestions[0];
-    if (matchingPage) {
-      navigate(matchingPage);
-    }
-  };
+    
+    if (searchQuery.length > 0) {
+      // Filtrar páginas com base na pesquisa
+      const suggestions = pageNames.filter((page) =>
+        page.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+      setSearchSuggestions(suggestions);
 
-  const toggleSuggestions = () => {
-    setShowSuggestions(!showSuggestions);
+      // Definir mensagem de erro personalizada
+      if (suggestions.length === 0) {
+        setErrorMessage('Página não encontrada.');
+      } else if (suggestions.length > 0 && suggestions[0] !== `/${searchQuery.toLowerCase()}`) {
+        setErrorMessage(`Página não encontrada. Você está procurando por "${suggestions[0].substring(1)}"?`);
+      } else {
+        setErrorMessage('');
+      }
+
+      // Navega para a primeira sugestão encontrada
+      const matchingPage = suggestions[0];
+      if (matchingPage) {
+        navigate(matchingPage);
+      }
+    } else {
+      setErrorMessage('Por favor, insira um termo de pesquisa.');
+    }
   };
 
   return (
@@ -115,38 +120,24 @@ const Header: React.FC<HeaderProps> = ({ logoUrl, actionButtons, children }) => 
           <button onClick={toggleSearchModal} className="close-modal-button">
             <img src="/img/close.png" alt="Fechar" className="close-icon" />
           </button>
-          <form onSubmit={handleSearchSubmit} className='form-model'>
+          <form onSubmit={handleSearchSubmit} className="form-model">
+          <h1 className='title-search'>Busca Triar</h1>
             <div className="search-input-container">
               <input
                 type="text"
                 placeholder="Digite sua pesquisa..."
-                className={`search-input ${hasNoResults ? 'error' : ''}`}
+                className="search-input" // Removido o estilo de erro aqui
                 value={searchQuery}
                 onChange={handleSearchChange}
               />
-              <button type="button" className="search-suggestions-button" onClick={toggleSuggestions}>
-                Sugestões
-              </button>
             </div>
             <button type="submit" className="search-submit-button">Pesquisar</button>
 
-            {/* Renderizar sugestões de pesquisa dentro do input */}
-            {showSuggestions && searchQuery && (
-              <>
-                {searchSuggestions.length > 0 ? (
-                  <ul className="search-suggestions active">
-                    {searchSuggestions.map((suggestion, index) => (
-                      <li key={index} onClick={() => navigate(suggestion)}>
-                        {suggestion}
-                      </li>
-                    ))}
-                  </ul>
-                ) : hasNoResults && (
-                  <div className="error-message">
-                    Página não encontrada
-                  </div>
-                )}
-              </>
+            {/* Mostrar mensagem de erro personalizada após o clique em "Pesquisar" */}
+            {errorMessage && (
+              <div className="error-message">
+                {errorMessage}
+              </div>
             )}
           </form>
         </div>

@@ -186,7 +186,6 @@ header .action-button:hover,
   display: flex;
 }
 
-/* Modal de Pesquisa */
 .search-modal-content {
   background-color: #f8f9fa;
   color:#f8f9fa ;
@@ -206,15 +205,22 @@ header .action-button:hover,
   display: flex;
   align-items: center;
   width: 100%;
-  margin-top: 20px; /* Ajusta o espaço acima do campo de input */
+  margin-top: 10px; /* Ajusta o espaço acima do campo de input */
+  margin-bottom: 5px;
 }
 
 .search-input {
   flex-grow: 1;
   padding: 10px;
-  border: 1px solid #ddd;
+  border: 1px solid #ddd; /* Borda padrão */
   border-radius: 4px;
   transition: border-color 0.3s ease;
+}
+
+.title-search {
+  background-color: #f8f9fa;
+  color: #000000;
+  margin: 0;
 }
 
 .search-input.error {
@@ -228,8 +234,8 @@ header .action-button:hover,
 }
 
 .error-message {
-  color: #f00; /* Cor vermelha para a mensagem de erro */
-  margin-top: 10px;
+  color: #f00; /* Cor vermelha para mensagem de erro */
+  margin-top: 8px;
 }
 
 .close-modal-button {
@@ -245,6 +251,10 @@ header .action-button:hover,
   z-index: 1; /* Garante que o botão esteja acima de outros elementos */
 }
 
+.search-submit-button{
+  align-items: center;
+}
+
 .close-icon {
   width: 30px; /* Tamanho do ícone de fechar */
   height: 30px;
@@ -256,7 +266,6 @@ header .action-button:hover,
   transform: scale(1.1); /* Aumenta o tamanho no hover */
   background-color: #f8f9fa;
 }
-
 
 /* Sugestões de Pesquisa */
 .search-suggestions {
@@ -279,15 +288,12 @@ header .action-button:hover,
 }
 
 .search-suggestions.active {
-  display: block; /* Exibe as sugestões quando a classe 'active' é adicionada */
-  opacity: 1;
-  transform: translateY(0);
+  display: block; /* Exibe as sugestões quando estiver ativo */
 }
 
 .search-suggestions li {
-  padding: 8px 12px;
+  padding: 10px;
   cursor: pointer;
-  transition: background-color 0.3s ease, padding 0.3s ease;
 }
 
 .search-suggestions li:hover {
