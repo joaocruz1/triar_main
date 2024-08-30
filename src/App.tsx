@@ -5,8 +5,6 @@ import Services from './pages/Services';  // Supondo que você tenha um componen
 import './styles/app.css';
 
 
-
-
 function App() {
   return (
     <Router>

@@ -3,7 +3,6 @@ import Navbar from "../components/Navbar";
 import EmblaCarousel from "../components/EmblaCarousel";
 import { EmblaOptionsType } from 'embla-carousel'
 import '../styles/base.css'
-import '../styles/sandbox.css'
 import '../styles/embla.css'
 
 
