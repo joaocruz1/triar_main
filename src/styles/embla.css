@@ -1,126 +1,171 @@
 .embla {
-    max-width: 135rem;
-    margin: auto;
-    --slide-height: 46rem;
-    --slide-spacing: 1rem;
-    --slide-size: 80%;
+  max-width: 151.7rem;
+  margin: auto;
+  --slide-height: 61.5rem;
+  --slide-spacing: 0.5rem;
+  --slide-size: 97%;
+  margin-top: 10px;
+}
+.embla__viewport {
+  overflow: hidden;
+}
+.embla__container {
+  display: flex;
+  touch-action: pan-y pinch-zoom;
+  margin-left: calc(var(--slide-spacing) * -1);
+}
+.embla__slide {
+  transform: translate3d(0, 0, 0);
+  flex: 0 0 var(--slide-size);
+  min-width: 0;
+  padding-left: var(--slide-spacing);
+}
+.embla__slide__img {
+  border-radius: 1.8rem;
+  display: block;
+  height: var(--slide-height);
+  width: 100%;
+  object-fit: cover;
+}
+.embla__controls {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  margin: 8px 5px 0;
+  justify-content: space-between;
+  gap: 1.2rem;
+}
+.embla__buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.embla__button {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); /* Remove o fundo azul no toque */
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: transparent; /* Remove o fundo azul */
+  touch-action: manipulation;
+  display: inline-flex;
+  text-decoration: none;
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  width: 3.6rem;
+  height: 3.6rem;
+  z-index: 1;
+  border-radius: 50%;
+  color: #4e4e4e; /* Preto padrão */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease; /* Adiciona a transição suave */
+}
+
+/* Efeito de hover para o botão */
+.embla__button:hover {
+  transform: scale(1.1); /* Aumenta o tamanho do botão no hover */
+  background-color: transparent; /* Mantém o fundo transparente no hover */
+}
+
+.embla__button:disabled {
+  color: #adb5bd; /* Cinza claro para botões desativados */
+}
+
+.embla__button__svg {
+  width: 35%;
+  height: 35%;
+}
+
+.embla__dots {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  margin-right: 5px;
+}
+
+.embla__dot {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  touch-action: manipulation;
+  display: inline-flex;
+  text-decoration: none;
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  width: 1.9rem;
+  height: 1.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.embla__dot:after {
+  box-shadow: inset 0 0 0 0.2rem #585858; /* Azul padrão */
+  width: 1.4rem;
+  height: 1.4rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  content: '';
+  position: absolute;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* Animação de gradiente ao passar o mouse pelo dot */
+.embla__dot:hover {
+  transform: scale(1.03); /* Leve aumento no hover */
+  background-color: transparent;
+  animation: dot-hover 0.6s ease forwards; /* Animação de transição */
+}
+
+.embla__dot:hover:after {
+  transform: scale(1.1); /* Aumenta um pouco o círculo menor */
+  background-color: #0095d5; /* Tom mais escuro de azul no hover */
+  box-shadow: inset 0 0 0 0.2rem #0074af; /* Borda azul mais escura */
+}
+
+/* Estilo para o dot selecionado */
+.embla__dot--selected:after {
+  box-shadow: inset 0 0 0 0.2rem #4f4f4f; /* Azul ainda mais escuro para o dot selecionado */
+  background-color: #5d9cbb; /* Azul escuro para o dot selecionado */
+}
+
+
+.embla__parallax {
+  border-radius: 1.8rem;
+  height: 100%;
+  overflow: hidden;
+}
+.embla__parallax__layer {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.embla__parallax__img {
+  max-width: none;
+  flex: 0 0 calc(115% + (var(--slide-spacing) * 2));
+  object-fit: cover;
+}
+
+/* Keyframes para a animação do dot */
+@keyframes dot-hover {
+  0% {
+    background-position: 0% 50%;
   }
-  .embla__viewport {
-    overflow: hidden;
+  100% {
+    background-position: 100% 50%;
   }
-  .embla__container {
-    display: flex;
-    touch-action: pan-y pinch-zoom;
-    margin-left: calc(var(--slide-spacing) * -1);
-  }
-  .embla__slide {
-    transform: translate3d(0, 0, 0);
-    flex: 0 0 var(--slide-size);
-    min-width: 0;
-    padding-left: var(--slide-spacing);
-  }
-  .embla__slide__img {
-    border-radius: 1.8rem;
-    display: block;
-    height: var(--slide-height);
-    width: 100%;
-    object-fit: cover;
-  }
-  .embla__controls {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    justify-content: space-between;
-    gap: 1.2rem;
-    margin-top: 1.8rem;
-  }
-  .embla__buttons {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.6rem;
-    align-items: center;
-  }
-  .embla__button {
-    -webkit-tap-highlight-color: rgba(var(--text-high-contrast-rgb-value), 0.5);
-    -webkit-appearance: none;
-    appearance: none;
-    background-color: transparent;
-    touch-action: manipulation;
-    display: inline-flex;
-    text-decoration: none;
-    cursor: pointer;
-    border: 0;
-    padding: 0;
-    margin: 0;
-    box-shadow: inset 0 0 0 0.2rem var(--detail-medium-contrast);
-    width: 3.6rem;
-    height: 3.6rem;
-    z-index: 1;
-    border-radius: 50%;
-    color: var(--text-body);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .embla__button:disabled {
-    color: var(--detail-high-contrast);
-  }
-  .embla__button__svg {
-    width: 35%;
-    height: 35%;
-  }
-  .embla__dots {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    align-items: center;
-    margin-right: calc((2.6rem - 1.4rem) / 2 * -1);
-  }
-  .embla__dot {
-    -webkit-tap-highlight-color: rgba(var(--text-high-contrast-rgb-value), 0.5);
-    -webkit-appearance: none;
-    appearance: none;
-    background-color: transparent;
-    touch-action: manipulation;
-    display: inline-flex;
-    text-decoration: none;
-    cursor: pointer;
-    border: 0;
-    padding: 0;
-    margin: 0;
-    width: 2.6rem;
-    height: 2.6rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-  }
-  .embla__dot:after {
-    box-shadow: inset 0 0 0 0.2rem var(--detail-medium-contrast);
-    width: 1.4rem;
-    height: 1.4rem;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    content: '';
-  }
-  .embla__dot--selected:after {
-    box-shadow: inset 0 0 0 0.2rem var(--text-body);
-  }
-  .embla__parallax {
-    border-radius: 1.8rem;
-    height: 100%;
-    overflow: hidden;
-  }
-  .embla__parallax__layer {
-    position: relative;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
-  .embla__parallax__img {
-    max-width: none;
-    flex: 0 0 calc(115% + (var(--slide-spacing) * 2));
-    object-fit: cover;
-  }
-  
+}

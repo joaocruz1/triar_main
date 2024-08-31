@@ -13,6 +13,10 @@ import {
 import { DotButton, useDotButton } from './EmblaCarouselDotButton'
 
 const TWEEN_FACTOR_BASE = 0.2
+const AUTOPLAY_INTERVAL = 6000 // Intervalo de autoplay em milissegundos (6 segundos)
+
+// Tipo para o ID do intervalo
+type AutoplayIntervalType = number;
 
 type PropType = {
   slides: number[]
@@ -24,6 +28,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
   const [emblaRef, emblaApi] = useEmblaCarousel(options)
   const tweenFactor = useRef(0)
   const tweenNodes = useRef<HTMLElement[]>([])
+  const autoplayInterval = useRef<AutoplayIntervalType | null>(null)
 
   const { selectedIndex, scrollSnaps, onDotButtonClick } =
     useDotButton(emblaApi)
@@ -85,12 +90,27 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
     []
   )
 
+  const startAutoplay = useCallback(() => {
+    if (!emblaApi) return
+    autoplayInterval.current = window.setInterval(() => {
+      emblaApi.scrollNext()
+    }, AUTOPLAY_INTERVAL)
+  }, [emblaApi])
+
+  const stopAutoplay = useCallback(() => {
+    if (autoplayInterval.current) {
+      window.clearInterval(autoplayInterval.current)
+      autoplayInterval.current = null
+    }
+  }, [])
+
   useEffect(() => {
     if (!emblaApi) return
 
     setTweenNodes(emblaApi)
     setTweenFactor(emblaApi)
     tweenParallax(emblaApi)
+    startAutoplay()
 
     emblaApi
       .on('reInit', setTweenNodes)
@@ -98,7 +118,11 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
       .on('reInit', tweenParallax)
       .on('scroll', tweenParallax)
       .on('slideFocus', tweenParallax)
-  }, [emblaApi, tweenParallax])
+
+    return () => {
+      stopAutoplay()
+    }
+  }, [emblaApi, tweenParallax, startAutoplay, stopAutoplay])
 
   return (
     <div className="embla">
@@ -129,7 +153,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
         <div className="embla__dots">
           {scrollSnaps.map((_, index) => (
             <DotButton
-              key={index}
+              key={index} 
               onClick={() => onDotButtonClick(index)}
               className={'embla__dot'.concat(
                 index === selectedIndex ? ' embla__dot--selected' : ''
