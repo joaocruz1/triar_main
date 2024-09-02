@@ -1,0 +1,46 @@
+/* src/styles/whatsappButton.css */
+
+.whatsapp-button {
+    position: fixed;
+    bottom: 20px; /* Altera a distância do botão do fundo da página */
+    right: 25px; /* Altera a distância do botão da borda direita */
+    z-index: 1000; /* Garante que o botão fique sempre à frente de outros elementos */
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 0px;
+    transition: transform 0.3s ease; /* Suaviza a transição */
+  }
+  
+  .whatsapp-button:hover {
+    transform: scale(1.1); /* Aumenta o tamanho do botão ao passar o mouse */
+  }
+  
+  .whatsapp-icon {
+    background-color: transparent;
+    width: 60px; /* Ajuste o tamanho da imagem do ícone conforme necessário */
+    height: 60px;
+  }
+  
+  /* Estilos para a caixa de mensagem */
+  .whatsapp-tooltip {
+    position: absolute;
+    bottom: 70px; /* Ajusta a posição acima do botão */
+    right: 10px; /* Ajusta a distância do lado direito, diminuindo para mover menos para a esquerda */
+    transform: translateX(0); /* Remove o ajuste de centralização horizontal */
+    background-color: #25D366; /* Cor de fundo do tooltip */
+    color: #fff; /* Cor do texto */
+    padding: 8px 12px;
+    border-radius: 4px; /* Bordas arredondadas */
+    white-space: nowrap; /* Impede a quebra de linha */
+    font-size: 14px; /* Tamanho da fonte */
+    opacity: 0; /* Inicialmente invisível */
+    visibility: hidden; /* Inicialmente invisível */
+    transition: opacity 0.3s ease, visibility 0.3s ease; /* Animação de transição */
+    z-index: 1001; /* Garante que o tooltip fique acima do botão */
+  }
+  
+  .whatsapp-button:hover .whatsapp-tooltip {
+    opacity: 1; /* Torna o tooltip visível */
+    visibility: visible; /* Torna o tooltip visível */
+  }
+  

@@ -1,22 +1,26 @@
 .title-container {
     opacity: 0; /* Esconde o elemento inicialmente */
     transform: translateY(20px); /* Move o elemento para baixo inicialmente */
-    transition: opacity 0.7s ease-out, transform 0.7s ease-out; /* Animação suave */
+    transition: opacity 0.7s ease-out, transform 0.7s ease; /* Animação suave */
     padding-left: 130px;
 }
+
 
 .main-title {
     font-size: 2.5em;
     color: #000;
     margin: 0;
     font-weight: bold;
-    text-align: left; /* Alinha o texto à esquerda */
-    cursor: pointer; /* Altera o cursor para indicar que é clicável */
-    transition: color 0.3s; /* Transição suave para a cor no hover */
+    text-align: left;
+    cursor: pointer;
+    transition: transform 0.3s ease, color 0.3s ease; /* Transição suave para transformação e cor */
 }
 
+
 .main-title:hover {
+    transform: scale(1.01);
     color: #00aeef; /* Altera a cor do título no hover */
+    cursor: pointer; /* Altera o cursor para indicar que é clicável somente no hover */
 }
 
 .highlighted-title {
