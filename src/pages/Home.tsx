@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom'; // Importa useNavigate para navegação
 import Navbar from "../components/Navbar";
 import CardServices from "../components/CardServices";
@@ -14,16 +14,42 @@ const SLIDES = Array.from(Array(SLIDE_COUNT).keys());
 
 const Home = () => {
     const navigate = useNavigate(); // Hook para navegação
+    const titleContainerRef = useRef(null);
 
     const handleTitleClick = () => {
         navigate('/sertriar'); // Redireciona para a URL desejada
     };
 
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            },
+            {
+                threshold: 0.3, // O quanto do elemento precisa estar visível para ativar
+            }
+        );
+
+        if (titleContainerRef.current) {
+            observer.observe(titleContainerRef.current);
+        }
+
+        return () => {
+            if (titleContainerRef.current) {
+                observer.unobserve(titleContainerRef.current);
+            }
+        };
+    }, []);
+
     return (
         <>
             <Navbar />
             <EmblaCarousel slides={SLIDES} options={OPTIONS} />
-            <div className="title-container">
+            <div className="title-container" ref={titleContainerRef}>
                 <h1 className="main-title" onClick={handleTitleClick}>
                     Seja <span className="highlighted-title">Triar</span>
                 </h1>

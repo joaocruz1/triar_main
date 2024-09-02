@@ -1,7 +1,8 @@
 .title-container {
-    text-align: left; /* Alinha o texto à esquerda */
-    margin: 50px 0; /* Margem para espaçamento superior e inferior */
-    padding-left: 210px; /* Ajusta o padding para o alinhamento à esquerda */
+    opacity: 0; /* Esconde o elemento inicialmente */
+    transform: translateY(20px); /* Move o elemento para baixo inicialmente */
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out; /* Animação suave */
+    padding-left: 130px;
 }
 
 .main-title {
@@ -22,10 +23,14 @@
     color: #00aeef; /* Azul para "Triar" */
 }
 
-
 .subtitle {
     font-size: 1.5em;
     color: #000;
     margin: 10px 0 0 0;
     text-align: left; /* Alinha o texto à esquerda */
+}
+
+.title-container.visible {
+    opacity: 1; /* Torna o elemento visível */
+    transform: translateY(0); /* Volta o elemento para a posição original */
 }
