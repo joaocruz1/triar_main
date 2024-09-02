@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ReactNode } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import '../styles/header.css';
+import '../styles/main.css';
 
 // Importar dinamicamente páginas
 const pages = import.meta.glob('/src/pages/*.tsx'); // Usando Vite
