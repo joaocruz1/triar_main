@@ -5,7 +5,8 @@ import {
   EmblaOptionsType
 } from 'embla-carousel';
 import useEmblaCarousel from 'embla-carousel-react';
-
+import { DotButton, useDotButton } from './EmblaCarouselDotButton';
+import { PrevButton,usePrevNextButtons,NextButton } from './EmblaCarouselArrowButtons';
 
 
 const TWEEN_FACTOR_BASE = 0.2
