@@ -1,0 +1,31 @@
+.title-container {
+    text-align: left; /* Alinha o texto à esquerda */
+    margin: 50px 0; /* Margem para espaçamento superior e inferior */
+    padding-left: 210px; /* Ajusta o padding para o alinhamento à esquerda */
+}
+
+.main-title {
+    font-size: 2.5em;
+    color: #000;
+    margin: 0;
+    font-weight: bold;
+    text-align: left; /* Alinha o texto à esquerda */
+    cursor: pointer; /* Altera o cursor para indicar que é clicável */
+    transition: color 0.3s; /* Transição suave para a cor no hover */
+}
+
+.main-title:hover {
+    color: #00aeef; /* Altera a cor do título no hover */
+}
+
+.highlighted-title {
+    color: #00aeef; /* Azul para "Triar" */
+}
+
+
+.subtitle {
+    font-size: 1.5em;
+    color: #000;
+    margin: 10px 0 0 0;
+    text-align: left; /* Alinha o texto à esquerda */
+}

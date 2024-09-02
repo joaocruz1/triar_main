@@ -8,8 +8,7 @@ import useEmblaCarousel from 'embla-carousel-react';
 
 
 
-const TWEEN_FACTOR_BASE = 0.2;
-const AUTO_PLAY_INTERVAL = 5000; // 5 seconds
+const TWEEN_FACTOR_BASE = 0.2
 
 type PropType = {
   slides: number[];
@@ -17,13 +16,20 @@ type PropType = {
 };
 
 const EmblaCarousel: React.FC<PropType> = (props) => {
-  const { slides, options } = props;
-  const [emblaRef, emblaApi] = useEmblaCarousel(options);
-  const tweenFactor = useRef(0);
-  const tweenNodes = useRef<HTMLElement[]>([]);
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const { slides, options } = props
+  const [emblaRef, emblaApi] = useEmblaCarousel(options)
+  const tweenFactor = useRef(0)
+  const tweenNodes = useRef<HTMLElement[]>([])
 
+  const { selectedIndex, scrollSnaps, onDotButtonClick } =
+    useDotButton(emblaApi)
 
+  const {
+    prevBtnDisabled,
+    nextBtnDisabled,
+    onPrevButtonClick,
+    onNextButtonClick
+  } = usePrevNextButtons(emblaApi)
 
   const setTweenNodes = useCallback((emblaApi: EmblaCarouselType): void => {
     tweenNodes.current = emblaApi.slideNodes().map((slideNode) => {
@@ -73,34 +79,22 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
       });
     },
     []
-  );
-
-  const autoPlay = useCallback(() => {
-    if (emblaApi) {
-      const nextIndex = (currentIndex + 1) % slides.length;
-      emblaApi.scrollTo(nextIndex);
-      setCurrentIndex(nextIndex);
-    }
-  }, [emblaApi, currentIndex, slides.length]);
+  )
 
   useEffect(() => {
     if (!emblaApi) return;
 
-    setTweenNodes(emblaApi);
-    setTweenFactor(emblaApi);
-    tweenParallax(emblaApi);
+    setTweenNodes(emblaApi)
+    setTweenFactor(emblaApi)
+    tweenParallax(emblaApi)
 
     emblaApi
       .on('reInit', setTweenNodes)
       .on('reInit', setTweenFactor)
       .on('reInit', tweenParallax)
       .on('scroll', tweenParallax)
-      .on('slideFocus', tweenParallax);
-
-    const interval = setInterval(autoPlay, AUTO_PLAY_INTERVAL);
-
-    return () => clearInterval(interval);
-  }, [emblaApi, tweenParallax, autoPlay]);
+      .on('slideFocus', tweenParallax)
+  }, [emblaApi, tweenParallax])
 
   return (
     <div className="embla">
@@ -121,8 +115,25 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
           ))}
         </div>
       </div>
-  
 
+      <div className="embla__controls">
+        <div className="embla__buttons">
+          <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
+          <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
+        </div>
+
+        <div className="embla__dots">
+          {scrollSnaps.map((_, index) => (
+            <DotButton
+              key={index}
+              onClick={() => onDotButtonClick(index)}
+              className={'embla__dot'.concat(
+                index === selectedIndex ? ' embla__dot--selected' : ''
+              )}
+            />
+          ))}
+        </div>
+      </div>
     </div>
   );
 };
