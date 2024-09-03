@@ -14,8 +14,8 @@
     --color-overlay: rgba(0, 0, 0, 0.5);
     --color-shadow-light: rgba(0, 0, 0, 0.1);
     --color-shadow-medium: rgba(0, 0, 0, 0.3);
-    --color-shadow-primary: rgba(0, 174, 239, 0.3);
+    --color-shadow-primary: rgba(0, 225, 255, 0.3);
     --color-dropdown-shadow: rgba(42, 176, 253, 0.2);
-    --background-header: rgb(248, 249, 250); /* Exemplo de valor para background-header */
+    --background-header: rgb(250, 248, 248); /* Exemplo de valor para background-header */
   }
   

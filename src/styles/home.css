@@ -8,7 +8,7 @@
 
 .main-title {
     font-size: 2.5em;
-    color: #000;
+    color: var(--color-black);
     margin: 0;
     font-weight: bold;
     text-align: left;
@@ -19,17 +19,17 @@
 
 .main-title:hover {
     transform: scale(1.01);
-    color: #00aeef; /* Altera a cor do título no hover */
+    color: var(--color-primary); /* Altera a cor do título no hover */
     cursor: pointer; /* Altera o cursor para indicar que é clicável somente no hover */
 }
 
 .highlighted-title {
-    color: #00aeef; /* Azul para "Triar" */
+    color: var(--color-primary); /* Azul para "Triar" */
 }
 
 .subtitle {
     font-size: 1.5em;
-    color: #000;
+    color: var(--color-black);
     margin: 10px 0 0 0;
     text-align: left; /* Alinha o texto à esquerda */
 }

@@ -3,10 +3,10 @@ header {
   display: flex;
   flex-direction: column;
   background-color: var(--background-header);
-  color: #000000;
+  color: var(--color-black);
   padding: 10px 5px;
   box-sizing: border-box;
-  border-bottom: 1px solid #e1e1e1;
+  border-bottom: 1px solid var(--color-light-gray);
 }
 
 header .top-section {
@@ -94,8 +94,8 @@ header .action-button:hover,
   position: fixed;
   top: 65px;
   left: 15px;
-  background-color: #fff;
-  border: 1px solid #e1e1e1;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-light-gray);
   box-shadow: 0px 6px 12px rgba(42, 176, 253, 0.2);
   z-index: 1000;
   width: 98vw;
@@ -129,8 +129,8 @@ header .action-button:hover,
   padding: 8px 16px;
   color: #333;
   text-decoration: none;
-  background-color: #fff;
-  border-bottom: 1px solid #e1e1e1;
+  background-color: var(--color-white);
+  border-bottom: 1px solid var(--color-light-gray);
   white-space: nowrap;
   border-radius: 4px;
   box-sizing: border-box;
@@ -143,7 +143,7 @@ header .action-button:hover,
 }
 
 .dropdown-content a img {
-  background-color: #fff;
+  background-color: var(--color-white);
   border-radius: 4px;
 }
 
@@ -212,19 +212,19 @@ header .action-button:hover,
 .search-input {
   flex-grow: 1;
   padding: 10px;
-  border: 1px solid #ddd; /* Borda padrão */
+  border: 1px solid var(--color-border-gray); /* Borda padrão */
   border-radius: 4px;
   transition: border-color 0.3s ease;
 }
 
 .title-search {
   background-color: var(--background-header);
-  color: #000000;
+  color: var(--color-black);
   margin: 0;
 }
 
 .search-input.error {
-  border-color: #f00; /* Cor vermelha quando há erro */
+  border-color: var(--color-error); /* Cor vermelha quando há erro */
   background-color: #ffe6e6; /* Fundo levemente vermelho para destaque */
 }
 
@@ -234,7 +234,7 @@ header .action-button:hover,
 }
 
 .error-message {
-  color: #f00; /* Cor vermelha para mensagem de erro */
+  color: var(--color-error); /* Cor vermelha para mensagem de erro */
   margin-top: 8px;
 }
 
@@ -282,7 +282,7 @@ header .action-button:hover,
   right: 0;
   z-index: 2; /* Garante que esteja acima de outros elementos */
   background-color: var(--background-header);
-  border: 1px solid #ddd;
+  border: 1px solid var(--color-border-gray);
   border-radius: 4px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   opacity: 0; /* Inicialmente invisível */
@@ -297,7 +297,7 @@ header .action-button:hover,
 .search-suggestions li {
   padding: 8px;
   cursor: pointer;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid var(--color-border-gray);
 }
 
 .search-suggestions li:last-child {
@@ -305,7 +305,7 @@ header .action-button:hover,
 }
 
 .search-suggestions li:hover {
-  background-color: #f8f9fa; /* Cor de fundo ao passar o mouse */
+  background-color: var(--color-hover-gray); /* Cor de fundo ao passar o mouse */
   background-color: var(--background-header);
 }
 

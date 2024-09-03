@@ -6,6 +6,7 @@ import EmblaCarousel from "../components/EmblaCarousel";
 import { EmblaOptionsType } from 'embla-carousel';
 import '../styles/base.css';
 import '../styles/embla.css';
+import '../styles/main.css';
 import '../styles/home.css'; // Importa o arquivo CSS
 
 const OPTIONS: EmblaOptionsType = { dragFree: true, loop: true };

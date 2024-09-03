@@ -21,7 +21,7 @@
 
 .service-card:hover {
   transform: scale(1.05);
-  box-shadow: 0 4px 8px rgba(0, 174, 239, 0.3);
+  box-shadow: 0 4px 8px rgba(0, 225, 255, 0.3);
 }
 
 .service-card__icon {
