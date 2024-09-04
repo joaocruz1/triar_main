@@ -1,8 +1,8 @@
 /* main.css ou base.css */
 :root {
     --color-black: #000000;
-    --color-secondary: #006ad5;
-    --color-primary: #00aeef;
+    --color-secondary: #ff10fb;
+    --color-primary: #e388ff;
     --color-dark-gray: #333333;
     --color-medium-gray: #666666;
     --color-light-gray: #e1e1e1;
@@ -14,8 +14,8 @@
     --color-overlay: rgba(0, 0, 0, 0.5);
     --color-shadow-light: rgba(0, 0, 0, 0.1);
     --color-shadow-medium: rgba(0, 0, 0, 0.3);
-    --color-shadow-primary: rgba(0, 225, 255, 0.3);
-    --color-dropdown-shadow: rgba(42, 176, 253, 0.2);
+    --color-shadow-primary: rgba(253, 52, 240, 0.3);
+    --color-dropdown-shadow: rgba(255, 95, 242, 0.2);
     --background-header: rgb(250, 248, 248); /* Exemplo de valor para background-header */
   }
   
